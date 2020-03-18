@@ -90,7 +90,7 @@ def index(request):
     m += 1
     # for s in range(len(i)):
     #     currency.objects.create(name_currency=i[s], value_name=j[s], value=k[s])
-    ret_render = loader.get_template('C:/ycheba/python/python/PROGECT/Main/templates/base_main.html')
+    ret_render = loader.get_template('C:/ycheba/python/PROJECT_PYTHON/PROGECT/Main/templates/base_main.html')
     i = currency.objects.order_by('-name_currency')
     context = {'currency': i, "latest_messages": Message.objects.order_by('-pub_date')[:9], 'user_stat': user_stat}
 
