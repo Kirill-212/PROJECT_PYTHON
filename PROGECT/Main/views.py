@@ -69,8 +69,8 @@ def index(request):
     col = 0
     user_stat = statistics_users.objects.get(id=1)
 
-    for i in range(1, len(User.objects.all()) + 1):
-        user = User.objects.get(id=i)
+    for ii in range(1, len(User.objects.all()) + 1):
+        user = User.objects.get(id=ii)
         txt += str(user)
         txt += ','
         col += 1
@@ -79,15 +79,22 @@ def index(request):
         user_stat.statisticsUser = col
     user_stat.save()
 
-    for s in range(1, 26):
+    for s in range(1, 27):
         number = currency.objects.get(id=s)
-        if number.value != k[m]:
-            number.value = k[m]
-        if number.value_name != j[m]:
-            number.value_name = j[m]
-        if number.name_currency != k[m]:
-            number.name_currency = k[m]
-    m += 1
+        value1 = number.value
+        value_name = number.value_name
+        name_currency = number.name_currency
+        if value1 != k[m]:
+            value1 = k[m]
+        if value_name != j[m]:
+            value_name = j[m]
+        if name_currency != i[m]:
+            name_currency = i[m]
+        number.value = value1
+        number.value_name = value_name
+        number.name_currency = name_currency
+        number.save()
+        m += 1
     # for s in range(len(i)):
     #     currency.objects.create(name_currency=i[s], value_name=j[s], value=k[s])
     ret_render = loader.get_template('C:/ycheba/python/PROJECT_PYTHON/PROGECT/Main/templates/base_main.html')
